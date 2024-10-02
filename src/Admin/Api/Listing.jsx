@@ -1,9 +1,9 @@
 import { Component } from 'react';
-import Api from '../Apis/Api';
+import Api from './Api';
 class Listing extends Component {
 
     async Login(data) {
-        return Api.post("/login", data);
+        return Api.post("/user/login", data);
     }
 
     async Profile(data) {
