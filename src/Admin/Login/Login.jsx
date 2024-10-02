@@ -1,7 +1,7 @@
 // Login.jsx
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Listing from '../Api/Listing';
 
 const Login = () => {
@@ -15,11 +15,6 @@ const Login = () => {
     const value = e.target.value;
     const name = e.target.name;
     setRegs((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
   };
 
   const [loading, setLoading] = useState(false);
@@ -52,11 +47,11 @@ const Login = () => {
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        {/* <img
+        <img
           className="mx-auto h-10 w-auto"
           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
           alt="Your Company"
-        /> */}
+        />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign in to your account
         </h2>
@@ -87,9 +82,9 @@ const Login = () => {
                 Mpin
               </label>
               <div className="text-sm">
-                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                <Link href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
                   Forgot password?
-                </a>
+                </Link>
               </div>
             </div>
             <div className="mt-2">
