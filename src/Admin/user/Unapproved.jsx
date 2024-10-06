@@ -1,7 +1,18 @@
 import React from "react";
+import SideBarAdmin from "../components/SideBar";
+import Header from "../components/Header";
 
 const Unapproved = () => {
   return (
+    <div className="md:flex flex-wrap bg-[#F5F6FB] items-start">
+    <div className="w-[304px] flex-shrink-0">
+      <SideBarAdmin />
+    </div>
+    {/* right sidebar */}
+    <div className="flex-grow">
+      <Header title={"UnApproved User  Management"} />
+      {/* Overview */}
+      <div className="px-4 py-2 lg:px-10 lg:py-2.5">
     <div className="table-responsive">
       <div className="w-full dataTables_wrapper dt-bootstrap4">
         <div className="flex flex-wrap mb-4">
@@ -141,6 +152,10 @@ const Unapproved = () => {
           </ul>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
+      
     </div>
   );
 };

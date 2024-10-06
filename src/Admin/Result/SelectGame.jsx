@@ -6,9 +6,9 @@ function SelectGame() {
       <div className="card-body">
         <h4 className="card-title text-lg font-semibold mb-4">Select Game</h4>
         <form name="gameSrchFrm" method="post">
-          <div className="flex flex-wrap gap-4">
+          <div className="flex gap-4">
             {/* Result Date */}
-            <div className="form-group w-full md:w-1/5">
+            <div className="form-group w-1/6">
               <label className="block text-sm font-medium text-gray-700 mb-1">Result Date</label>
               <div className="date-picker">
                 <input
@@ -23,7 +23,7 @@ function SelectGame() {
             </div>
 
             {/* Game Name */}
-            <div className="form-group w-full md:w-1/5">
+            <div className="form-group w-1/6">
               <label className="block text-sm font-medium text-gray-700 mb-1">Game Name</label>
               <select
                 required
@@ -42,7 +42,7 @@ function SelectGame() {
             </div>
 
             {/* Number */}
-            <div className="form-group w-full md:w-1/5">
+            <div className="form-group w-1/6">
               <label className="block text-sm font-medium text-gray-700 mb-1">Number</label>
               <select
                 required
@@ -60,7 +60,7 @@ function SelectGame() {
             </div>
 
             {/* Declare Result Button */}
-            <div className="form-group w-full md:w-1/5">
+            <div className="form-group w-1/6">
               <label className="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
               <button
                 type="submit"
@@ -73,7 +73,7 @@ function SelectGame() {
             </div>
 
             {/* Declare Allot Button */}
-            <div className="form-group w-full md:w-1/5">
+            <div className="form-group w-1/6">
               <label className="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
               <button
                 type="submit"
@@ -86,25 +86,26 @@ function SelectGame() {
             </div>
 
             {/* Winner List Button */}
-            <div className="form-group w-full md:w-1/5">
+            <div className="form-group w-1/6">
               <label className="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
               <button
                 type="button"
-                // onClick={() => delhiGetResult()}
                 className="btn btn-primary bg-blue-500 text-white font-semibold py-2 px-4 w-full rounded-md"
               >
                 Winner List
               </button>
             </div>
+          </div>
 
-            {/* Error Message */}
-            <div className="form-group w-full">
-              <div id="error" className="text-red-500 text-sm mt-2"></div>
-            </div>
+          {/* Error Message */}
+          <div className="form-group w-full mt-4">
+            <div id="error" className="text-red-500 text-sm"></div>
           </div>
         </form>
       </div>
     </div>
+
+
   );
 }
 

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import SideBarAdmin from '../components/SideBar';
+import Header from '../components/Header';
 
 const UserListTable = () => {
 
@@ -30,6 +32,15 @@ const UserListTable = () => {
     );
   };
   return (
+    <div className="md:flex flex-wrap bg-[#F5F6FB] items-start">
+    <div className="w-[304px] flex-shrink-0">
+      <SideBarAdmin />
+    </div>
+    {/* right sidebar */}
+    <div className="flex-grow">
+      <Header title={"User  Management"} />
+      {/* Overview */}
+      <div className="px-4 py-2 lg:px-10 lg:py-2.5">
     <div className="overflow-x-auto">
       <table className="min-w-full border-collapse border border-gray-300">
         <thead className="bg-gray-100">
@@ -89,6 +100,9 @@ const UserListTable = () => {
           ))}
         </tbody>
       </table>
+    </div>
+    </div>
+    </div>
     </div>
   );
 };
