@@ -99,6 +99,33 @@ capitalize px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base
                                     </Link>
                                 </li>
 
+                                <li>
+                                    <Link to="/game-rate" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                        Game Rate
+                                    </Link>
+                                </li>
+
+
+                                <li>
+                                    <Link to="/delhi-bet_allgame" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                        Dehli bet AllGame
+                                    </Link>
+                                </li>
+
+
+                                <li>
+                                    <Link to="/betlist" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                    bet list
+                                    </Link>
+                                </li>
+
+
+                                <li>
+                                    <Link to="/winning-report" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                    winning report
+                                    </Link>
+                                </li>
+
                             </ul>
                         )}
                     </li>
