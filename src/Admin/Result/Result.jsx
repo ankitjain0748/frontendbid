@@ -1,7 +1,7 @@
 import SelectGame from "./SelectGame";
 import GameResultHistory from "./GameResultHistory";
 import WinMember from "./WinMember";
-import SideBarAdmin from "../components/SideBar";
+import SideBarAdmin from "../components/AdminSideBar";
 import Header from "../components/Header";
 
 

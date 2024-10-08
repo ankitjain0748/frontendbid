@@ -13,6 +13,7 @@ let Api = axios.create({
   baseURL: APP_URL,
   headers: {
     'Accept': 'application/json',
+    "Access-Control-Allow-Origin": "*",
   }
 });
 

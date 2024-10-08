@@ -36,8 +36,8 @@ function SideBarAdmin() {
                 <h3 className="uppercase text-[#808080] px-[15px] text-sm font-semibold mb-2.5 lg:mb-3.5">Overview</h3>
                 <ul className="space-y-3">
                     <li>
-                        <Link to="/"
-                            className={`px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base tracking-[-0.03em] font-medium hover:text-[#0367F7] ${pathname === "/" ? 'bg-[#0367F7] bg-opacity-10 text-[#0367F7]' : 'text-[#8D929A] '}`}
+                        <Link to="/dashboard"
+                            className={`px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base tracking-[-0.03em] font-medium hover:text-[#0367F7] ${pathname === "/dashboard" ? 'bg-[#0367F7] bg-opacity-10 text-[#0367F7]' : 'text-[#8D929A] '}`}
                         >
                             <svg className="inline align-middle mr-[4px]" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.4622 7.5V2.5H18.1289V7.5H11.4622ZM3.12891 10.8333V2.5H9.79557V10.8333H3.12891ZM11.4622 17.5V9.16667H18.1289V17.5H11.4622ZM3.12891 17.5V12.5H9.79557V17.5H3.12891Z" fill="currentColor" />
@@ -115,14 +115,14 @@ capitalize px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base
 
                                 <li>
                                     <Link to="/betlist" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
-                                    bet list
+                                        bet list
                                     </Link>
                                 </li>
 
 
                                 <li>
                                     <Link to="/winning-report" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
-                                    winning report
+                                        winning report
                                     </Link>
                                 </li>
 

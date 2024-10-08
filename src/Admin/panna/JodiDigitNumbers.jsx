@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthLayout from '../components/Authlayout';
-import SideBarAdmin from '../components/SideBar';
+import SideBarAdmin from '../components/AdminSideBar';
 import Header from '../components/Header';
 
 const JodiDigitNumbers = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBarAdmin from '../components/SideBar';
+import SideBarAdmin from '../components/AdminSideBar';
 import Header from '../components/Header';
 
 const SingleDigitNumbers = () => {

@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import SideBarAdmin from "../components/SideBar";
+import SideBarAdmin from "../components/AdminSideBar";
 
 function Index() {
     return (<>

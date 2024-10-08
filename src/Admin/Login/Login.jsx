@@ -9,7 +9,7 @@ const Login = () => {
   const [Regs, setRegs] = useState({
     phone: "",
     mpin: "",
-
+    role: 'admin'
   });
   const handleInputs = (e) => {
     const value = e.target.value;
@@ -28,12 +28,13 @@ const Login = () => {
     const main = new Listing();
     try {
       const response = await main.Login(Regs);
-      if (response?.data) {
+      console.log("response", response)
+      if (response?.data?.status === true) {
         localStorage.setItem("token", response?.data?.token);
         navigate("/dashboard");
         toast.success(response.data.message);
       } else {
-        toast.error("invalid email/password");
+        toast.error(response.data.message);
       }
       setLoading(false);
     } catch (error) {
@@ -45,6 +46,7 @@ const Login = () => {
 
 
   return (
+
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
@@ -61,7 +63,7 @@ const Login = () => {
         <form className="space-y-6" >
           <div>
             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-              Email address
+              Phone
             </label>
             <div className="mt-2">
               <input

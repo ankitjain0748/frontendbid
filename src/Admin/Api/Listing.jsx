@@ -6,10 +6,17 @@ class Listing extends Component {
         return Api.post("/user/login", data);
     }
 
-    async Profile(data) {
-        return Api.post("/update-profile", data)
+    async Profile() {
+        return Api.get("/user", )
     }
 
+    async userList() {
+        return Api.get("/user/list", )
+    }
+    async userListStatus() {
+        return Api.get("/user/list/status", )
+    }
+   
 
     async Password(data) {
         return Api.post("/change-password", data)
