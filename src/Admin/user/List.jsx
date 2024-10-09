@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import SideBarAdmin from '../components/AdminSideBar';
-import Header from '../components/Header';
 import Listing from '../Api/Listing';
 import AdminLayout from '../Layout/AdminLayout';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const UserListTable = () => {
 
@@ -11,7 +12,6 @@ const UserListTable = () => {
 
   ]);
 
-  console.log("users",users)
 
   const fetchData = () => {
     const main = new Listing();
@@ -35,7 +35,7 @@ const UserListTable = () => {
   const toggleUserStatus = (id) => {
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
-        user.id === id ? { ...user, status: user.status === "Active" ? "Inactive" : "Active" } : user
+        user.id === id ? { ...user, status: user.status === "active" ? "inactive" : "active" } : user
       )
     );
   };
@@ -60,22 +60,23 @@ const UserListTable = () => {
             {users.map((user, index) => (
               <tr key={user.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                 <td className="border border-gray-300 p-2">{index + 1}</td>
-                <td className="border border-gray-300 p-2">
-                  <a href={`view-user.php?member_id=${user.member_id}`} target="_blank" rel="noopener noreferrer">
-                    {user.phone} ({user.username})
-                  </a>
+                <td className="border border-gray-300 p-2 capitalize">
+                  <Link to={`
+ view-user.php?member_id=${user.member_id}`} target="_blank" rel="noopener noreferrer" className='capitalize'>
+                    {user.username}
+                  </Link>
                 </td>
                 <td className="border border-gray-300 p-2">
-                  <a href={`https://wa.me/${user.phone}`} target="blank">
-                    <i className="mdi mdi-whatsapp"></i>
-                  </a>
+                  <Link to={`https://wa.me/${user.phone}`} target="blank">
+                    <FaWhatsapp className="text-center" size={24} />
+                  </Link>
                 </td>
                 <td className="border border-gray-300 p-2">
-                  {user.mobile} <a href={`tel:${user.mobile}`}><i className="mdi mdi-cellphone-iphone"></i></a>
+                  {user.phone}<Link to={`tel:${user.phone}`}><i className="mdi mdi-cellphone-iphone"></i></Link>
                 </td>
                 <td className="border border-gray-300 p-2">{user.amount}</td>
                 <td className="border border-gray-300 p-2">{
-                moment(user.created_at).format("DD MMM YYYY")
+                  moment(user.created_at).format("DD MMM YYYY")
                 }</td>
                 <td className="border border-gray-300 p-2">
                   <div className="flex items-center">
@@ -95,9 +96,9 @@ const UserListTable = () => {
                   </div>
                 </td>
                 <td className="border border-gray-300 p-2">
-                  <a href={`view-user.php?member_id=${user.member_id}`} target="_blank" rel="noopener noreferrer">
+                  <Link to={`view-user.php?member_id=${user.member_id}`} target="_blank" rel="noopener noreferrer">
                     <i className="mdi mdi-eye text-lg"></i>
-                  </a>
+                  </Link>
                 </td>
               </tr>
             ))}

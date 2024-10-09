@@ -18,8 +18,12 @@ class Listing extends Component {
     }
    
 
-    async Password(data) {
-        return Api.post("/change-password", data)
+    async marketAdd(data) {
+        return Api.post("/market/marketadd", data)
+    }
+
+    async marketlist() {
+        return Api.get("/market/marketlist", )
     }
 
     async Subscription(data) {
