@@ -4,6 +4,7 @@ import AdminLayout from '../Layout/AdminLayout';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { FaWhatsapp } from "react-icons/fa";
+import toast from 'react-hot-toast';
 
 
 const UserListTable = () => {
@@ -31,17 +32,31 @@ const UserListTable = () => {
     fetchData()
   }, []);
 
+  const [isActive, setIsActive] = useState(false);
 
-  const toggleUserStatus = (id) => {
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user.id === id ? { ...user, status: user.status === "active" ? "inactive" : "active" } : user
-      )
-    );
+  const toggleUserStatus = async (id, currentStatus) => {
+    const newStatus = currentStatus === "active" ? "inactive" : "active"; // Determine new status
+    try {
+      const main = new Listing();
+      const response = await main.userStatus({ _id: id, user_status: newStatus });
+
+      if (response.data) {
+        toast.success(response?.data?.message)
+        fetchData();
+      } else {
+        console.log("Failed to update user status.");
+        toast.error(response?.data?.message)
+
+      }
+    } catch (error) {
+      console.error("Error updating user status:", error);
+    }
   };
+
+
+
   return (
     <AdminLayout>
-
       <div className="overflow-x-auto">
         <table className="min-w-full border-collapse border border-gray-300">
           <thead className="bg-gray-100">
@@ -58,11 +73,10 @@ const UserListTable = () => {
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr key={user.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <tr key={user._id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                 <td className="border border-gray-300 p-2">{index + 1}</td>
                 <td className="border border-gray-300 p-2 capitalize">
-                  <Link to={`
- view-user.php?member_id=${user.member_id}`} target="_blank" rel="noopener noreferrer" className='capitalize'>
+                  <Link to={`view-user.php?member_id=${user.member_id}`} target="_blank" rel="noopener noreferrer" className='capitalize'>
                     {user.username}
                   </Link>
                 </td>
@@ -80,21 +94,22 @@ const UserListTable = () => {
                 }</td>
                 <td className="border border-gray-300 p-2">
                   <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={`softstatus${index + 1}`}
-                      className="hidden"
-                      checked={user.user_status === 'active'}
-                    // onChange={() => handleStatusChange(user.id)}
-                    />
-                    <label
-                      htmlFor={`softstatus${index + 1}`}
-                      className="cursor-pointer select-none"
+                    <button
+                      onClick={() => toggleUserStatus(user._id, user.user_status)} // Pass current status and id
+                      style={{
+                        backgroundColor: user.user_status === "active" ? 'green' : 'red',
+                        color: 'white',
+                        padding: '10px 20px',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                      }}
                     >
-                      {user.user_status}
-                    </label>
+                      {user.user_status === "active" ? 'Active' : 'Inactive'}
+                    </button>
                   </div>
                 </td>
+
                 <td className="border border-gray-300 p-2">
                   <Link to={`view-user.php?member_id=${user.member_id}`} target="_blank" rel="noopener noreferrer">
                     <i className="mdi mdi-eye text-lg"></i>

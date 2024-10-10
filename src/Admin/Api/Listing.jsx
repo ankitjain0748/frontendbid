@@ -17,13 +17,24 @@ class Listing extends Component {
         return Api.get("/user/list/status", )
     }
    
-
+    async userStatus(data) {
+        return Api.post("/user/update-status", data )
+    }
+   
     async marketAdd(data) {
         return Api.post("/market/marketadd", data)
     }
 
     async marketlist() {
         return Api.get("/market/marketlist", )
+    }
+
+    async marketEdit(data) {
+        return Api.post("/market/marketupdate", data)
+    }
+
+    async marketDelete(data) {
+        return Api.post("/market/marketdelete", data)
     }
 
     async Subscription(data) {

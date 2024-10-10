@@ -8,8 +8,8 @@ import UserListTable from "./Admin/user/List";
 import Result from "./Admin/Result/Result";
 import AdminForm from "./Admin/Setting/AdminForm";
 import SideBar from "./Admin/SiderBar/Sidebar";
-import AddGameRates from "./Admin/Management/AddGameRates";
-import AddGameName from "./Admin/Management/Index";
+import AddGameRates from "./Admin/DehliManagement/AddGameRates";
+import AddGameName from "./Admin/DehliManagement/Index";
 import { Toaster } from "react-hot-toast";
 
 
@@ -29,7 +29,7 @@ function App() {
           <Route path="un-approved-users-list" element={<Unapproved />} />
           <Route path="users-list" element={<UserListTable />} />
           <Route path="results" element={<Result />} />
-          <Route path="/admin/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/settings" element={<AdminForm />} />
           <Route path="/slider" element={<SideBar />} />
           <Route path="/game-rate" element={<AddGameRates />} />

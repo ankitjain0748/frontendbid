@@ -1,12 +1,36 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { AiOutlineClose } from 'react-icons/ai'; // Importing a close icon from react-icons
+import { AiOutlineClose } from 'react-icons/ai';
+import Listing from '../Api/Listing';
+import toast from 'react-hot-toast';
 
-function Delete() {
+function Delete({ Id, fetchMarketList }) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const openModal = () => setModalIsOpen(true);
     const closeModal = () => setModalIsOpen(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const main = new Listing();
+            const response = await main.marketDelete({ Id: Id });
+            if (response?.data?.status) {
+                toast.success(response.data.message);
+                fetchMarketList(); // Refresh the listing
+                closeModal();
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.error("Error", error);
+            toast.error("Error deleting market.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <>
@@ -21,41 +45,46 @@ function Delete() {
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
-                    className="relative bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto"
+                    aria-labelledby="modal-title"
+                    aria-describedby="modal-description"
+                    className="max-w-md mx-auto"
                     overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
                 >
-                    {/* Close icon */}
-                    <button
-                        onClick={closeModal}
-                        className="absolute top-2 right-2 p-2 focus:outline-none"
-                    >
-                        <AiOutlineClose className="h-6 w-6 text-gray-700" />
-                    </button>
+                    <div className="relative bg-white w-full rounded-[30px] lg:rounded-[40px] m-auto">
+                        <div className="flex justify-between items-center border-b border-black border-opacity-10 pt-6 pb-5 px-6 lg:pt-8 lg:pb-6 lg:px-10">
+                            <h2 id="modal-title" className="text-xl lg:text-2xl text-[#212121] font-semibold mb-0">
+                                Confirm Delete
+                            </h2>
+                            <button
+                                type="button"
+                                onClick={closeModal}
+                                className="text-gray-700 hover:text-gray-900"
+                            >
+                                <AiOutlineClose className="h-6 w-6" />
+                            </button>
+                        </div>
 
-                    <h2 className="text-xl font-semibold mb-4">Confirm Delete</h2>
-                    <p className="mb-6 text-gray-600">
-                        Are you sure you want to delete this item? This action cannot be undone.
-                    </p>
+                        <div className="py-6 lg:py-8">
+                            <div className="max-h-[60vh] overflow-y-auto customscroll px-6 lg:px-10">
+                                <p id="modal-description">Are you sure you want to delete this service? This action cannot be undone.</p>
+                            </div>
 
-                    <div className="flex justify-end gap-4">
-                        {/* Close button */}
-                        <button
-                            onClick={closeModal}
-                            className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
-                        >
-                            Close
-                        </button>
-
-                        {/* Delete button */}
-                        <button
-                            onClick={() => {
-                                // Add your delete logic here
-                                closeModal();
-                            }}
-                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                        >
-                            Delete
-                        </button>
+                            <div className="flex justify-end px-6 lg:px-10 py-4 space-x-4">
+                                <button
+                                    onClick={closeModal}
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleSubmit}
+                                    className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700"
+                                    disabled={loading}
+                                >
+                                    {loading ? "Processing..." : "Delete"}
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </Modal>
             </div>
