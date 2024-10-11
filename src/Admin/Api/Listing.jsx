@@ -13,6 +13,14 @@ class Listing extends Component {
     async userList() {
         return Api.get("/user/list", )
     }
+
+    async userListId(id) {
+        return Api.get(`/user/userlist/${id}`)
+    }
+
+    
+
+
     async userListStatus() {
         return Api.get("/user/list/status", )
     }

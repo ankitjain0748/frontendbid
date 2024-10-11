@@ -4,6 +4,8 @@ import Listing from "../Api/Listing";
 import moment from "moment";
 import { FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { GrFormView } from "react-icons/gr";
+
 
 const Unapproved = () => {
 
@@ -93,13 +95,15 @@ const Unapproved = () => {
                         <label htmlFor={`softstatus${user.id}`}>{user.user_status}</label>
                       </div>
                     </td>
+
                     <td className="border border-gray-300 p-2">
                       <Link
-                        to={`view-user.php?member_id=${user.id}`}
+                        to={`/user/${user._id}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="text-blue-600 hover:underline"
                       >
-                        <i className="mdi mdi-eye font-size-18"></i>
+                        <GrFormView size={24} />
                       </Link>
                     </td>
                   </tr>

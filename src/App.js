@@ -11,6 +11,8 @@ import SideBar from "./Admin/SiderBar/Sidebar";
 import AddGameRates from "./Admin/DehliManagement/AddGameRates";
 import AddGameName from "./Admin/DehliManagement/Index";
 import { Toaster } from "react-hot-toast";
+import MarketManagementForm from "./Admin/DehliManagement/MarketManagementForm";
+import UserCard from "./Admin/user/UserCard";
 
 
 function App() {
@@ -34,6 +36,10 @@ function App() {
           <Route path="/slider" element={<SideBar />} />
           <Route path="/game-rate" element={<AddGameRates />} />
           <Route path="/game-name" element={<AddGameName />} />
+
+          <Route path="/onOffMarket" element={<MarketManagementForm />} />
+          <Route path="/user/:id" element={<UserCard />} />
+
         </Routes>
       </Router>
     </div>
