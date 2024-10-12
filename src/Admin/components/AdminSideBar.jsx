@@ -7,7 +7,7 @@ import { TfiLayoutSlider } from "react-icons/tfi";
 
 
 function SideBarAdmin() {
-    const navigate =useNavigate();
+    const navigate = useNavigate();
     const { pathname } = useLocation();
 
     const handleclick = () => {
@@ -34,7 +34,8 @@ function SideBarAdmin() {
     };
 
     return (<>
-        <div className={`z-50 w-[300px] md:w-[280px] fixed lg:relative left-0 top-0 bottom-0 overflow-y-auto  lg:block bg-white ${isOpen ? 'block' : 'hidden'}`} >
+        <div className={`z-50 custom_scroll w-[260px] md:w-[304px] fixed  left-0 top-0 bottom-0 overflow-y-auto  lg:block bg-white ${isOpen ? 'block' : 'hidden'}`} >
+
             <div className="px-4 py-4 md:px-6 md:py-6 lg:px-[28px] lg:py-8">
                 <div className='mb-5 md:mb-10 lg:mb-[53px] text-center'>
                     <img className="max-w-full block m-auto" src={"/Header/Logo.png"} alt='img' width="208" />
@@ -150,6 +151,34 @@ capitalize px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base
                                 <li>
                                     <Link to="/jodi-digit" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
                                         Jodi Digit
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/single_pana" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                       Single Pana
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to="/double_pana" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                       Double Pana
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to="/tripplepanna" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                        Tripple Pana
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to="/halfsangam" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                        Half Sangam
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/fullsangam" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                        Full Sangam
                                     </Link>
                                 </li>
 

@@ -13,6 +13,11 @@ import AddGameName from "./Admin/MubaiManagement/Index";
 import { Toaster } from "react-hot-toast";
 import MarketManagementForm from "./Admin/MubaiManagement/MarketManagementForm";
 import UserCard from "./Admin/user/UserCard";
+import Tripplepanna from "./Admin/panna/TripplePanna";
+import FullSangam from "./Admin/panna/FullSangam";
+import HalfSangam from "./Admin/panna/HalfSangam";
+import SinglePanaNumbers from "./Admin/panna/SinglePanaNumbers";
+import DoblePannaNumber from "./Admin/panna/DoblePannaNumber";
 
 
 function App() {
@@ -28,9 +33,14 @@ function App() {
           <Route path="/dashboard" element={<Index />} />
           <Route path="jodi-digit" element={<JodiDigitNumbers />} />
           <Route path="single-digit" element={<SingleDigitNumbers />} />
-          <Route path="un-approved-users-list" element={<Unapproved />} />
-          <Route path="users-list" element={<UserListTable />} />
-          <Route path="results" element={<Result />} />
+          <Route path="/single_pana" element={<SinglePanaNumbers/>}/>
+          <Route path="/double_pana" element={<DoblePannaNumber/>} />
+          <Route path ="/tripplepanna" element={<Tripplepanna/>}/>
+          <Route path ="/fullsangam" element={<FullSangam/>}/>
+          <Route path ="/halfsangam" element={<HalfSangam/>}/>
+          <Route path="/un-approved-users-list" element={<Unapproved />} />
+          <Route path="/users-list" element={<UserListTable />} />
+          <Route path="/results" element={<Result />} />
           <Route path="/" element={<Login />} />
           <Route path="/settings" element={<AdminForm />} />
           <Route path="/slider" element={<SideBar />} />

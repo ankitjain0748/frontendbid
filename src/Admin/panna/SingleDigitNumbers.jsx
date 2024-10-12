@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBarAdmin from '../components/AdminSideBar';
 import Header from '../components/Header';
+import AdminLayout from '../Layout/AdminLayout';
 
 const SingleDigitNumbers = () => {
   // Handler function to handle button clicks
@@ -9,14 +10,7 @@ const SingleDigitNumbers = () => {
   };
 
   return (
-    <div className="md:flex flex-wrap bg-[#F5F6FB] items-start">
-    <div className="w-[304px] flex-shrink-0">
-      <SideBarAdmin />
-    </div>
-    {/* right sidebar */}
-    <div className="flex-grow">
-      <Header title={"Single Digit Numbers"} />
-      {/* Overview */}
+   <AdminLayout>
     <div className="container mx-auto px-4 py-8">
       <div className="bg-white shadow-lg rounded-lg">
         <div className="p-6">
@@ -35,8 +29,8 @@ const SingleDigitNumbers = () => {
         </div>
       </div>
     </div>
-    </div>
-    </div>
+   </AdminLayout>
+  
   );
 };
 

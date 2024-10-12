@@ -39,15 +39,16 @@ export default function AdminLayout({ children, title, subhead }) {
     //   }, []);
     return (
         <div className="md:flex flex-wrap bg-[#F5F6FB] items-start">
-            <div className="w-[304px] flex-shrink-0">
-                <SideBarAdmin />
-            </div>
-            <div className="flex-grow">
-                <Header title={"Admin"} />
-                <div className="px-4 py-2 lg:px-10 lg:py-2.5">
-                    {children}
-                </div>
-            </div>
+        <div className="w-[304px] flex-shrink-0 md:w-[304px] lg:w-[304px]"> 
+          <SideBarAdmin />
         </div>
+        <div className="flex-grow">
+          <Header title={"Admin"} />
+          <div className="px-4 py-2 lg:px-10 lg:py-2.5">
+            {children}
+          </div>
+        </div>
+      </div>
+      
     );
 }

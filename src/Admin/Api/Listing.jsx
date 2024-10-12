@@ -61,8 +61,9 @@ class Listing extends Component {
         return Api.post("/market/marketdelete", data)
     }
 
-    async Subscription(data) {
-        return Api.post("/create-subscription", data)
+
+    async GameRate(data) {
+        return Api.post("/panna/gamerate", data)
     }
 
     async Subscriptionlist() {
