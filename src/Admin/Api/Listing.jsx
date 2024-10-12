@@ -7,46 +7,50 @@ class Listing extends Component {
     }
 
     async Profile() {
-        return Api.get("/user", )
+        return Api.get("/user",)
     }
 
     async userList() {
-        return Api.get("/user/list", )
+        return Api.get("/user/list",)
     }
 
     async userListId(id) {
         return Api.get(`/user/userlist/${id}`)
     }
 
-    
+
 
 
     async userListStatus() {
-        return Api.get("/user/list/status", )
+        return Api.get("/user/list/status",)
     }
-   
+
     async userStatus(data) {
-        return Api.post("/user/update-status", data )
+        return Api.post("/user/update-status", data)
     }
 
     async userDelete(data) {
-        return Api.post("/user/delete", data )
+        return Api.post("/user/delete", data)
+    }
+
+    async userProfile(data) {
+        return Api.post("/user/profile", data)
     }
 
     async userwithdrawal(data) {
-        return Api.post("/payment/withdrawal/data", data )
+        return Api.post("/payment/withdrawal/data", data)
     }
 
     async usersuccess(data) {
-        return Api.post("/payment/success/data", data )
+        return Api.post("/payment/success/data", data)
     }
-    
+
     async marketAdd(data) {
         return Api.post("/market/marketadd", data)
     }
 
     async marketlist() {
-        return Api.get("/market/marketlist", )
+        return Api.get("/market/marketlist",)
     }
 
     async marketEdit(data) {
@@ -76,7 +80,7 @@ class Listing extends Component {
         return Api.get("/statistics")
     }
 
-    async StoryCard(type, query,page) {
+    async StoryCard(type, query, page) {
         return Api.get(`/story-list/${type}?${query}&page=${page}`,)
     }
 
@@ -94,12 +98,12 @@ class Listing extends Component {
         return Api.post(`/save-image`, data)
     }
 
-    async getdetilas(){
+    async getdetilas() {
         return Api.get("/get-detail")
     }
 
 
-    async fetchKey(){
+    async fetchKey() {
         return Api.get("/fetch-api-key")
     }
 
@@ -108,27 +112,27 @@ class Listing extends Component {
         return Api.get("/admin-logout")
     }
 
-    async getchart(){
+    async getchart() {
         return Api.get("/get-data-bymonth")
     }
 
-    async forget(data){
-        return Api.post("/forgot-password-admin",data)
+    async forget(data) {
+        return Api.post("/forgot-password-admin", data)
     }
 
-    async forgetopt(data){
-        return Api.post("/verify-reset-password-otp",data)
+    async forgetopt(data) {
+        return Api.post("/verify-reset-password-otp", data)
     }
 
-    async forgetpass(data){
-        return Api.post("/reset-password",data)
+    async forgetpass(data) {
+        return Api.post("/reset-password", data)
     }
 
-    async update_ai_keys(data){
+    async update_ai_keys(data) {
         return Api.post(`/update-key`, data)
     }
 
-    
+
     render() {
         return (
             <div>

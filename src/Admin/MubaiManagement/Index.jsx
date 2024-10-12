@@ -9,6 +9,7 @@ import Delete from "../components/Delete";
 import moment from "moment";
 import Modal from "react-modal"; // Assuming you are using this library
 import { AiOutlineClose } from "react-icons/ai"; // For close icon
+import { MdModeEdit } from "react-icons/md";
 
 function Index() {
     const navigate = useNavigate();
@@ -213,10 +214,10 @@ function Index() {
                                         </td>
                                         <td className="py-3 px-6 text-left">
                                             <button
-                                                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                                                className="bg-green-500 text-white px-2 py-2 rounded hover:bg-green-600"
                                                 onClick={() => openModal(item)}
                                             >
-                                                Edit
+                                                <MdModeEdit size={24} />
                                             </button>
                                         </td>
                                         <td className="py-3 px-6 text-left">

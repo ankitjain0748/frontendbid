@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { AiOutlineClose } from 'react-icons/ai';
+import { MdModeEdit } from "react-icons/md";
 
 function Edit() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -28,32 +29,38 @@ function Edit() {
 
     return (
         <>
-            <div className="flex justify-center items-center">
                 <button
                     className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
                     onClick={openModal}
                 >
-                    Edit
+                 <MdModeEdit  size={24} />
+
                 </button>
+                <div className="relative bg-white w-full rounded-[30px] lg:rounded-[40px] h-auto m-auto">
+                        <button
+                            type="button"
+                            onClick={closeModal}
+                            className="absolute top-5 md:top-6 lg:top-9 right-6 lg:right-10 text-gray-700 hover:text-gray-900"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
 
-                <Modal
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}
-                    className="relative bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto"
-                    overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-                >
-                    {/* Close icon */}
-                    <button
-                        onClick={closeModal}
-                        className="absolute top-2 right-2 p-2 focus:outline-none"
-                    >
-                        <AiOutlineClose className="h-6 w-6 text-gray-700" />
-                    </button>
+                        <div className="border-b border-black border-opacity-10 pt-6 pb-5 px-6 lg:pt-8 lg:pb-6 lg:px-10">
+                            <h2 className="text-xl lg:text-2xl text-[#212121] tracking-[-0.04em] font-semibold mb-0">
+                                Delete
+                            </h2>
+                        </div>
 
-                    <h2 className="text-xl font-semibold mb-4">Edit Information</h2>
-
-                    {/* Edit form */}
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div className="py-6 lg:py-8">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Name</label>
                             <input
@@ -94,8 +101,26 @@ function Edit() {
                             </button>
                         </div>
                     </form>
-                </Modal>
-            </div>
+
+
+
+                            <div className="flex justify-end px-6 lg:px-10 py-4 space-x-4">
+                                <button
+                                    onClick={handleClose}
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleClick}
+                                    className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700"
+                                >
+                                    {processing ? "Processing..." : "Delete"}
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
         </>
     );
 }

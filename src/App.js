@@ -8,10 +8,10 @@ import UserListTable from "./Admin/user/List";
 import Result from "./Admin/Result/Result";
 import AdminForm from "./Admin/Setting/AdminForm";
 import SideBar from "./Admin/SiderBar/Sidebar";
-import AddGameRates from "./Admin/DehliManagement/AddGameRates";
-import AddGameName from "./Admin/DehliManagement/Index";
+import AddGameRates from "./Admin/MubaiManagement/AddGameRates";
+import AddGameName from "./Admin/MubaiManagement/Index";
 import { Toaster } from "react-hot-toast";
-import MarketManagementForm from "./Admin/DehliManagement/MarketManagementForm";
+import MarketManagementForm from "./Admin/MubaiManagement/MarketManagementForm";
 import UserCard from "./Admin/user/UserCard";
 
 
@@ -36,7 +36,6 @@ function App() {
           <Route path="/slider" element={<SideBar />} />
           <Route path="/game-rate" element={<AddGameRates />} />
           <Route path="/game-name" element={<AddGameName />} />
-
           <Route path="/onOffMarket" element={<MarketManagementForm />} />
           <Route path="/user/:id" element={<UserCard />} />
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { IoIosSettings } from "react-icons/io";
 import { CgGames } from "react-icons/cg";
@@ -7,6 +7,7 @@ import { TfiLayoutSlider } from "react-icons/tfi";
 
 
 function SideBarAdmin() {
+    const navigate =useNavigate();
     const { pathname } = useLocation();
 
     const handleclick = () => {
@@ -25,6 +26,11 @@ function SideBarAdmin() {
             ...prevDropdowns,
             [link]: !prevDropdowns[link],
         }));
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate("/")
     };
 
     return (<>
@@ -74,7 +80,7 @@ capitalize px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base
                                     ? 'bg-indigo-600 bg-opacity-10 text-indigo-600' : 'text-[#8D929A] '}`}
                         >
                             <FaUser size={18} className="mr-2" />
-                            Delhi Declare Result
+                            Mumbai Declare Result
                         </Link>
                     </li>
 
@@ -84,7 +90,7 @@ capitalize px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base
                         <svg className="inline align-middle mr-[4px]" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.4622 7.5V2.5H18.1289V7.5H11.4622ZM3.12891 10.8333V2.5H9.79557V10.8333H3.12891ZM11.4622 17.5V9.16667H18.1289V17.5H11.4622ZM3.12891 17.5V12.5H9.79557V17.5H3.12891Z" fill="currentColor" />
                         </svg>
-                        &nbsp; Dehli  Management
+                        &nbsp; Mumbai  Management
                         {dropdowns.link2 && (
                             <ul className="bg-white rounded-md mt-2 p-2">
                                 <li>
@@ -174,7 +180,7 @@ capitalize px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base
 
 
                     <li>
-                        <button onClick={handleclick} className="px-[15px] flex flex-wrap items-center py-[7px]  rounded-full text-base tracking-[-0.03em] font-medium text-[#FF1B1B] hover:text-indigo-600">
+                        <button onClick={handleLogout} className="px-[15px] flex flex-wrap items-center py-[7px]  rounded-full text-base tracking-[-0.03em] font-medium text-[#FF1B1B] hover:text-indigo-600">
                             <svg className="inline align-middle mr-[4px]" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7.5 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V4.16667C2.5 3.72464 2.67559 3.30072 2.98816 2.98816C3.30072 2.67559 3.72464 2.5 4.16667 2.5H7.5" stroke="#FF1B1B" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M13.333 14.1663L17.4997 9.99967L13.333 5.83301" stroke="#FF1B1B" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
