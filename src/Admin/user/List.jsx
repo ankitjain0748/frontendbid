@@ -7,6 +7,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import toast from 'react-hot-toast';
 import Loaidng from "../components/Loading";
 import { GrFormView } from "react-icons/gr";
+import Delete from '../components/Delete';
 
 const UserListTable = () => {
   const [users, setUsers] = useState([]);
@@ -74,6 +75,7 @@ const UserListTable = () => {
                 <th className="border border-gray-300 p-2 text-left">Date</th>
                 <th className="border border-gray-300 p-2 text-left">Status</th>
                 <th className="border border-gray-300 p-2 text-left">Option</th>
+                <th className="border border-gray-300 p-2 text-left">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -118,17 +120,22 @@ const UserListTable = () => {
                       </button>
                     </div>
                   </td>
-
                   <td className="border border-gray-300 p-2">
                     <Link
                       to={`/user/${user._id}`}
-                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline"
                     >
                       <GrFormView size ={24} />
                     </Link>
                   </td>
+                  <td className="border border-gray-300 p-2">
+
+                    <Delete Id= {user?._id} step={2} fetchData={fetchData}/>
+                  </td>
+
+
+                  
                 </tr>
               ))}
             </tbody>

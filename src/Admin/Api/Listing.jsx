@@ -28,7 +28,19 @@ class Listing extends Component {
     async userStatus(data) {
         return Api.post("/user/update-status", data )
     }
-   
+
+    async userDelete(data) {
+        return Api.post("/user/delete", data )
+    }
+
+    async userwithdrawal(data) {
+        return Api.post("/payment/withdrawal/data", data )
+    }
+
+    async usersuccess(data) {
+        return Api.post("/payment/success/data", data )
+    }
+    
     async marketAdd(data) {
         return Api.post("/market/marketadd", data)
     }

@@ -3,8 +3,10 @@ import Modal from 'react-modal';
 import { AiOutlineClose } from 'react-icons/ai';
 import Listing from '../Api/Listing';
 import toast from 'react-hot-toast';
+import { MdDeleteOutline } from "react-icons/md";
 
-function Delete({ Id, fetchMarketList }) {
+
+function Delete({ Id, fetchMarketList, step ,fetchData}) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -32,6 +34,38 @@ function Delete({ Id, fetchMarketList }) {
         }
     };
 
+
+    const handleUserSubmit = async (e) => {
+        setLoading(true);
+        try {
+            const main = new Listing();
+            const response = await main.userDelete({ Id: Id });
+            if (response?.data?.status) {
+                toast.success(response.data.message);
+                fetchData(); // Refresh the listing
+                closeModal();
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.error("Error", error);
+            toast.error("Error deleting market.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
+    const handleClick = () => {
+        if (step === 1) {
+            handleSubmit();
+        } else if (step === 2) {
+            handleUserSubmit();
+        } else {
+            console.warn('Invalid step');
+        }
+    };
+
     return (
         <>
             <div className="flex justify-center items-center">
@@ -39,7 +73,7 @@ function Delete({ Id, fetchMarketList }) {
                     className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
                     onClick={openModal}
                 >
-                    Delete
+                    <MdDeleteOutline size={24} />
                 </button>
 
                 <Modal
@@ -77,7 +111,7 @@ function Delete({ Id, fetchMarketList }) {
                                     Cancel
                                 </button>
                                 <button
-                                    onClick={handleSubmit}
+                                    onClick={handleClick}
                                     className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700"
                                     disabled={loading}
                                 >
