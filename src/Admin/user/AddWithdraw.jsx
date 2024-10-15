@@ -50,8 +50,8 @@ function AddWithdraw({ user_id, fetchUserData }) {
         <>
             <button
                 onClick={openModal}
-                className="bg-red-400 text-white py-2 px-4 rounded-md hover:bg-red-600 transition w-full">
-                Withdrawal Funds
+                className="bg-red-400 font-semibold text-white text-[12px] py-2 px-2 rounded-md hover:bg-red-600 transition w-full">
+                Withdrawal Fund
             </button>
 
             <Modal

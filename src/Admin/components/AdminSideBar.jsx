@@ -38,7 +38,7 @@ function SideBarAdmin() {
 
             <div className="px-4 py-4 md:px-6 md:py-6 lg:px-[28px] lg:py-8">
                 <div className='mb-5 md:mb-10 lg:mb-[53px] text-center'>
-                    <img className="max-w-full block m-auto" src={"/Header/Logo.png"} alt='img' width="208" />
+<p>Global Satta</p>
                 </div>
                 <ul className="space-y-3">
                     <li>

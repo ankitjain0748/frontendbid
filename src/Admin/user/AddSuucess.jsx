@@ -50,7 +50,7 @@ function AddSuccess({ user_id, fetchUserData }) {
             {/* Button to trigger modal */}
             <button
                 onClick={openModal}
-                className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition w-full">
+                className="bg-green-500 font-semibold text-white py-2 px-2 text-[12px] rounded-md hover:bg-green-400 transition w-full">
                 Add Fund
             </button>
 

@@ -1,21 +1,20 @@
 import React from 'react';
 
-function SelectGame() {
+function SelectGame({ listing }) {
   return (
-    <div className="card">
+    <div className="card bg-white rounded-md px-4 py-2 lg:px-10 lg:py-2.5">
       <div className="card-body">
         <h4 className="card-title text-lg font-semibold mb-4">Select Game</h4>
-        <form name="gameSrchFrm" method="post">
-          <div className="flex gap-4">
+        <form name="gameSrchFrm">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Result Date */}
-            <div className="form-group w-1/6">
+            <div className="form-group">
               <label className="block text-sm font-medium text-gray-700 mb-1">Result Date</label>
               <div className="date-picker">
                 <input
                   required
                   className="form-control digits border rounded-md p-2 w-full"
                   type="date"
-                  defaultValue="2024-10-03"
                   name="betdate"
                   id="betdate"
                 />
@@ -23,7 +22,7 @@ function SelectGame() {
             </div>
 
             {/* Game Name */}
-            <div className="form-group w-1/6">
+            <div className="form-group">
               <label className="block text-sm font-medium text-gray-700 mb-1">Game Name</label>
               <select
                 required
@@ -32,17 +31,31 @@ function SelectGame() {
                 id="marketid"
               >
                 <option value="">Select Name</option>
-                <option value="25">GALI</option>
-                <option value="26">FARIDABAD</option>
-                <option value="29">DESAWAR</option>
-                <option value="31">GAZIYABAAD</option>
-                <option value="32">Delhi bajar</option>
-                <option value="33">Shri Ganesh</option>
+                {listing && listing.map((item) => (
+                  <option key={item._id} value={item._id}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Select Session */}
+            <div className="form-group">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Select Session</label>
+              <select
+                required
+                className="form-control select2 border rounded-md p-2 w-full"
+                name="market_id"
+                id="marketid"
+              >
+                <option value="">Select Session</option>
+                <option value="open">Open</option>
+                <option value="close">Close</option>
               </select>
             </div>
 
             {/* Number */}
-            <div className="form-group w-1/6">
+            <div className="form-group">
               <label className="block text-sm font-medium text-gray-700 mb-1">Number</label>
               <select
                 required
@@ -58,9 +71,12 @@ function SelectGame() {
                 ))}
               </select>
             </div>
+          </div>
 
+          {/* Second row with buttons */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
             {/* Declare Result Button */}
-            <div className="form-group w-1/6">
+            <div className="form-group">
               <label className="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
               <button
                 type="submit"
@@ -73,7 +89,7 @@ function SelectGame() {
             </div>
 
             {/* Declare Allot Button */}
-            <div className="form-group w-1/6">
+            <div className="form-group">
               <label className="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
               <button
                 type="submit"
@@ -86,7 +102,7 @@ function SelectGame() {
             </div>
 
             {/* Winner List Button */}
-            <div className="form-group w-1/6">
+            <div className="form-group">
               <label className="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
               <button
                 type="button"
@@ -95,20 +111,16 @@ function SelectGame() {
                 Winner List
               </button>
             </div>
-          </div>
 
-          {/* Error Message */}
-          <div className="form-group w-full mt-4">
-            <div id="error" className="text-red-500 text-sm"></div>
+            {/* Error Message */}
+            <div className="form-group">
+              <div id="error" className="text-red-500 text-sm"></div>
+            </div>
           </div>
         </form>
       </div>
     </div>
-
-
   );
 }
 
 export default SelectGame;
-
-

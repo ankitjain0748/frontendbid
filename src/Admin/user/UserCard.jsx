@@ -47,12 +47,12 @@ const UserCard = () => {
             ) : (
                 <>
 
-                    <div className="flex flex-wrap -mx-4">
+                    <div className="flex flex-wrap mx-4">
                         <div className="w-full xl:w-1/3 px-4 mb-4 xl:mb-0">
                             <div className="card h-full overflow-hidden shadow-lg rounded-lg">
                                 <div className="bg-blue-100">
                                     <div className="flex">
-                                        <div className="w-1/3 p-3">
+                                        <div className="w-2/4 p-3">
                                             <h5 className="text-indigo-500 capitalize ">{user?.username || 'N/A'}</h5>
                                             <p>
                                                 {user?.phone}
@@ -64,7 +64,7 @@ const UserCard = () => {
                                                 </a>
                                             </p>
                                         </div>
-                                        <div className="w-2/3 text-right p-3">
+                                        <div className="w-2/4 text-right p-3">
                                             <div className="mb-2">
                                                 Active : &nbsp;
                                                 <span className={`badge ${user?.user_status === 'active' ? 'bg-green-500' : 'bg-red-500'} text-white px-1 py-1 rounded-md`}>
@@ -89,7 +89,7 @@ const UserCard = () => {
                                     <div className="border-t pt-4">
                                         <p className="text-gray-600 mb-2">Available Balance</p>
                                         <h5>{user?.amount || 'N/A'}</h5>
-                                        <div className="flex mt-3 space-x-4">
+                                        <div className="flex mt-3 space-x-2">
                                             <AddSuucess user_id={user?._id} fetchUserData={fetchUserData} />
                                             <AddWithdraw user_id={user?._id} fetchUserData={fetchUserData} />
                                         </div>
@@ -98,7 +98,7 @@ const UserCard = () => {
                             </div>
                         </div>
 
-                        <div className="w-full xl:w-2/3 px-4">
+                        <div className="w-full xl:w-2/3 px-4 mb-4 xl:mb-0">
                             <div className="card h-full shadow-lg rounded-lg">
                                 <div className="card-body p-6">
                                     <h4 className="card-title text-lg font-semibold mb-4">Personal Information</h4>
