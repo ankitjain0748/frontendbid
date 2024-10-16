@@ -1,11 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Listing from '../Api/Listing';
+import toast from 'react-hot-toast';
 
 function SelectGame({ listing }) {
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    betdate: new Date().toISOString().slice(0, 10), // Default to today's date
+    market_id: '',
+    session: '',
+    number: '',
+  });
+
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+        const main = new Listing();
+        const response = await main.ResultRate(formData);
+        console.log("response", response)
+        if (response?.data) {
+            toast.success(response.data.message);
+        } else {
+            toast.error(response.data.message);
+        }
+    } catch (error) {
+        console.error("Error", error);
+        toast.error("Error updating market.");
+    } finally {
+        setLoading(false);
+    }
+};
+
   return (
     <div className="card bg-white rounded-md px-4 py-2 lg:px-10 lg:py-2.5">
       <div className="card-body">
         <h4 className="card-title text-lg font-semibold mb-4">Select Game</h4>
-        <form name="gameSrchFrm">
+        <form name="gameSrchFrm" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Result Date */}
             <div className="form-group">
@@ -17,6 +58,8 @@ function SelectGame({ listing }) {
                   type="date"
                   name="betdate"
                   id="betdate"
+                  value={formData.betdate}
+                  onChange={handleInputChange}
                 />
               </div>
             </div>
@@ -29,6 +72,8 @@ function SelectGame({ listing }) {
                 className="form-control select2 border rounded-md p-2 w-full"
                 name="market_id"
                 id="marketid"
+                value={formData.market_id}
+                onChange={handleInputChange}
               >
                 <option value="">Select Name</option>
                 {listing && listing.map((item) => (
@@ -45,8 +90,10 @@ function SelectGame({ listing }) {
               <select
                 required
                 className="form-control select2 border rounded-md p-2 w-full"
-                name="market_id"
-                id="marketid"
+                name="session"
+                id="session"
+                value={formData.session}
+                onChange={handleInputChange}
               >
                 <option value="">Select Session</option>
                 <option value="open">Open</option>
@@ -62,11 +109,14 @@ function SelectGame({ listing }) {
                 className="form-control select2 border rounded-md p-2 w-full"
                 name="number"
                 id="number"
+                value={formData.number}
+                onChange={handleInputChange}
               >
                 <option value="">Select Number</option>
-                {[...Array(100).keys()].map((num) => (
-                  <option key={num} value={num < 10 ? `0${num}` : num}>
-                    {num < 10 ? `0${num}` : num}
+                <option value="000">000</option>
+                {[...Array(900).keys()].map((num) => (
+                  <option key={num + 100} value={num + 100}>
+                    {num + 100}
                   </option>
                 ))}
               </select>
@@ -79,12 +129,14 @@ function SelectGame({ listing }) {
             <div className="form-group">
               <label className="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
               <button
+              onSubmit={handleSubmit}
                 type="submit"
                 className="btn btn-primary bg-blue-500 text-white font-semibold py-2 px-4 w-full rounded-md"
                 name="update"
                 id="update"
               >
-                Declare Result
+                {loading ? "Loading..." : "Declare Result"}
+                
               </button>
             </div>
 

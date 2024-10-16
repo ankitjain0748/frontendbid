@@ -66,6 +66,12 @@ class Listing extends Component {
         return Api.post("/panna/gamerate", data)
     }
 
+
+    async ResultRate(data) {
+        return Api.post("/result/resultadd", data)
+    }
+
+
     async Subscriptionlist() {
         return Api.get("/get-subscription-list")
     }

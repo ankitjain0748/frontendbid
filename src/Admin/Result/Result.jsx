@@ -1,8 +1,6 @@
 import SelectGame from "./SelectGame";
 import GameResultHistory from "./GameResultHistory";
 import WinMember from "./WinMember";
-import SideBarAdmin from "../components/AdminSideBar";
-import Header from "../components/Header";
 import AdminLayout from "../Layout/AdminLayout";
 import Listing from "../Api/Listing";
 import { useEffect, useState } from "react";
@@ -32,23 +30,16 @@ function Result() {
     }, []);
     return (<>
         <AdminLayout>
-
             <div className="">
-
                 <div className="mb-5">
-
                     <SelectGame listing={listing} />
                 </div>
                 <div className="mb-5">
-
                     <WinMember />
-
                 </div>
                 <div className="mb-5">
-
                     <GameResultHistory />
                 </div>
-
             </div>
         </AdminLayout>
     </>);
