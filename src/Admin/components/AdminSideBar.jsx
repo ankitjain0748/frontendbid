@@ -38,7 +38,7 @@ function SideBarAdmin() {
 
             <div className="px-4 py-4 md:px-6 md:py-6 lg:px-[28px] lg:py-8">
                 <div className='mb-5 md:mb-10 lg:mb-[53px] text-center'>
-<p>Global Satta</p>
+                    <p>Global Satta</p>
                 </div>
                 <ul className="space-y-3">
                     <li>
@@ -113,8 +113,8 @@ capitalize px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base
 
 
                                 <li>
-                                    <Link to="/delhi-bet_allgame" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
-                                        Dehli bet AllGame
+                                    <Link to="/mumbai-user-bid-history" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
+                                        Bid History
                                     </Link>
                                 </li>
 
@@ -155,13 +155,13 @@ capitalize px-[15px] flex flex-wrap items-center py-[7px] rounded-full text-base
                                 </li>
                                 <li>
                                     <Link to="/single_pana" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
-                                       Single Pana
+                                        Single Pana
                                     </Link>
                                 </li>
 
                                 <li>
                                     <Link to="/double_pana" className="block px-4 py-2 text-[#8D929A]  hover:text-black">
-                                       Double Pana
+                                        Double Pana
                                     </Link>
                                 </li>
 

@@ -18,6 +18,7 @@ import FullSangam from "./Admin/panna/FullSangam";
 import HalfSangam from "./Admin/panna/HalfSangam";
 import SinglePanaNumbers from "./Admin/panna/SinglePanaNumbers";
 import DoblePannaNumber from "./Admin/panna/DoblePannaNumber";
+import BidHistoryReport from "./Admin/MubaiManagement/BidHistoryReport";
 
 
 function App() {
@@ -48,6 +49,8 @@ function App() {
           <Route path="/game-name" element={<AddGameName />} />
           <Route path="/onOffMarket" element={<MarketManagementForm />} />
           <Route path="/user/:id" element={<UserCard />} />
+          <Route path="/mumbai-user-bid-history" element={<BidHistoryReport />} />
+
 
         </Routes>
       </Router>

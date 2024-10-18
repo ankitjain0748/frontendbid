@@ -66,6 +66,11 @@ class Listing extends Component {
         return Api.post("/panna/gamerate", data)
     }
 
+    async BidHistory() {
+        return Api.get("/panna/bid-history")
+    }
+
+
 
     async ResultRate(data) {
         return Api.post("/result/resultadd", data)
