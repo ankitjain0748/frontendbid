@@ -189,6 +189,8 @@ function Index() {
                                 <th className="py-3 px-6 text-left">Market Name</th>
                                 <th className="py-3 px-6 text-left">Open Time</th>
                                 <th className="py-3 px-6 text-left">Close Time</th>
+                                <th className="py-3 px-6 text-left">Market Status</th>
+
                                 <th className="py-3 px-6 text-left">Edit</th>
                                 <th className="py-3 px-6 text-left">Delete</th>
                             </tr>
@@ -211,6 +213,9 @@ function Index() {
                                         </td>
                                         <td className="py-3 px-6 text-left">
                                             {moment(item?.close_time, 'HH:mm').format('hh:mm A')}
+                                        </td>
+                                        <td className="py-3 px-6 text-left">
+                                            {item?.market_status}
                                         </td>
                                         <td className="py-3 px-6 text-left">
                                             <button
