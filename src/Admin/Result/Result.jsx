@@ -30,7 +30,6 @@ function Result() {
     }, []);
     return (<>
         <AdminLayout>
-            <div className="">
                 <div className="mb-5">
                     <SelectGame listing={listing} />
                 </div>
@@ -40,7 +39,6 @@ function Result() {
                 <div className="mb-5">
                     <GameResultHistory />
                 </div>
-            </div>
         </AdminLayout>
     </>);
 }

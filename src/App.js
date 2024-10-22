@@ -19,6 +19,8 @@ import HalfSangam from "./Admin/panna/HalfSangam";
 import SinglePanaNumbers from "./Admin/panna/SinglePanaNumbers";
 import DoblePannaNumber from "./Admin/panna/DoblePannaNumber";
 import BidHistoryReport from "./Admin/MubaiManagement/BidHistoryReport";
+import WinningHistory from "./Admin/MubaiManagement/WinningHistory";
+import BetListing from "./Admin/MubaiManagement/BetListing";
 
 
 function App() {
@@ -50,6 +52,11 @@ function App() {
           <Route path="/onOffMarket" element={<MarketManagementForm />} />
           <Route path="/user/:id" element={<UserCard />} />
           <Route path="/mumbai-user-bid-history" element={<BidHistoryReport />} />
+          <Route path="/winning-report" element={<WinningHistory />} />
+          <Route path="/betlist" element={<BetListing />} />
+
+          
+
 
 
         </Routes>

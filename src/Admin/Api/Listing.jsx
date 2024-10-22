@@ -76,6 +76,10 @@ class Listing extends Component {
         return Api.post("/result/resultadd", data)
     }
 
+    async ResultGet() {
+        return Api.get("/result/resultget", )
+    }
+
 
     async Subscriptionlist() {
         return Api.get("/get-subscription-list")

@@ -1,40 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Listing from '../Api/Listing';
 
 const WinMember = () => {
+
+  const [loading, setLoading] = useState(false);
+  const [listing, setListing] = useState([]);
+
+  console.log("listing", listing)
+
+  const fetchMarketList = async () => {
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.ResultGet();
+      console.log("response", response)
+      setListing(response?.data?.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchMarketList();
+  }, []);
+  console.log()
   return (
     <div className="card-body">
       <h4 className="card-title text-lg font-bold mb-4">Win Member</h4>
       <span id="deleteBetListMsg"></span>
-      <div className="table-responsive">
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center">
-            <label className="mr-2">
-              Show
-              <select
-                name="delhi-win-member_length"
-                className="ml-2 custom-select custom-select-sm form-control form-control-sm"
-              >
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-              entries
-            </label>
-          </div>
-          <div className="flex items-center">
-            <label className="mr-2">
-              Search:
-              <input
-                type="search"
-                className="ml-2 form-control form-control-sm"
-                placeholder=""
-                aria-controls="delhi-win-member"
-              />
-            </label>
-          </div>
-        </div>
-        <table className="min-w-full bg-white table-auto">
+      <div className="overflow-x-auto w-full">
+                    <table className="min-w-full bg-white shadow-lg rounded-lg">
           <thead>
             <tr className="bg-gray-200">
               <th className="py-2 px-4 border-b-2 border-gray-300">#</th>
@@ -42,37 +39,35 @@ const WinMember = () => {
               <th className="py-2 px-4 border-b-2 border-gray-300">Game Name</th>
               <th className="py-2 px-4 border-b-2 border-gray-300">Bet Digit</th>
               <th className="py-2 px-4 border-b-2 border-gray-300">Bet Amount</th>
-              <th className="py-2 px-4 border-b-2 border-gray-300">Edit Bet</th>
-              <th className="py-2 px-4 border-b-2 border-gray-300">Delete Bet</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="py-2 px-4 border-b" colSpan="7">
-                No data available in table
-              </td>
-            </tr>
+            {listing?.map((item, index) => (
+              <tr key={item._id} className="text-gray-600 text-sm font-light">
+                <td className=" px-3 py-6">{index + 1}</td>
+                <td className=" px-3 py-6">{item.userId.username}</td>
+                <td className=" px-3 py-6">{item.marketId.name}</td>
+                <td className=" px-3 py-6">
+                  {
+                    item?.panaaModal?.map((panaa) => (
+                      <div key={panaa._id}>
+                        Panna:   {panaa.digit}
+                      </div>
+                    ))
+                  }
+                  {
+                    item?.sangamModal?.map((sangam) => (
+                      <div key={sangam._id}>
+                        Sangam:{sangam.open_panna}, {sangam.close_panna}
+                      </div>
+                    ))
+                  }
+                </td>
+                <td className=" px-3 py-6">{item.userId.amount}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
-        <div className="flex justify-between items-center mt-4">
-          <div>
-            Showing 0 to 0 of 0 entries
-          </div>
-          <div className="flex items-center">
-            <button
-              disabled
-              className="page-link bg-gray-200 text-gray-500 px-3 py-1 rounded-md"
-            >
-              Previous
-            </button>
-            <button
-              disabled
-              className="page-link bg-gray-200 text-gray-500 px-3 py-1 rounded-md ml-2"
-            >
-              Next
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );

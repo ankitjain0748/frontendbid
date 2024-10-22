@@ -190,7 +190,6 @@ function Index() {
                                 <th className="py-3 px-6 text-left">Open Time</th>
                                 <th className="py-3 px-6 text-left">Close Time</th>
                                 <th className="py-3 px-6 text-left">Market Status</th>
-
                                 <th className="py-3 px-6 text-left">Edit</th>
                                 <th className="py-3 px-6 text-left">Delete</th>
                             </tr>
