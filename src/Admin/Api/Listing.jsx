@@ -6,6 +6,9 @@ class Listing extends Component {
         return Api.post("/user/login", data);
     }
 
+    async SubLogin(data) {
+        return Api.post("/user/Sublogin", data);
+    }
     async Profile() {
         return Api.get("/user",)
     }
@@ -19,10 +22,8 @@ class Listing extends Component {
     }
 
 
-
-
     async userListStatus() {
-        return Api.get("/user/list/status",)
+        return Api.get("/user/list/status")
     }
 
     async userStatus(data) {
@@ -48,23 +49,18 @@ class Listing extends Component {
     async marketAdd(data) {
         return Api.post("/market/marketadd", data)
     }
-
     async marketlist() {
-        return Api.get("/market/marketlist",)
+        return Api.get("/market/marketlist")
     }
-
     async marketlistupdate() {
-        return Api.get("/market/marketlistupdate",)
+        return Api.get("/market/marketlistupdate")
     }
-
     async marketEdit(data) {
         return Api.post("/market/marketupdate", data)
     }
-
     async marketDelete(data) {
         return Api.post("/market/marketdelete", data)
     }
-
     async GameRate(data) {
         return Api.post("/panna/gamerate", data)
     }

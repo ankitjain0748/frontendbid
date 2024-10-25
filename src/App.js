@@ -21,6 +21,9 @@ import DoblePannaNumber from "./Admin/panna/DoblePannaNumber";
 import BidHistoryReport from "./Admin/MubaiManagement/BidHistoryReport";
 import WinningHistory from "./Admin/MubaiManagement/WinningHistory";
 import BetListing from "./Admin/MubaiManagement/BetListing";
+import Subadmin from "./Admin/subadmin/Subadmin";
+import SubResult from "./Admin/subadmin/Result/Result";
+
 
 
 function App() {
@@ -34,6 +37,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/dashboard" element={<Index />} />
+          <Route path="/sub_admin_login" element={<Subadmin />} />
+          <Route path="/sub-admin-reult" element={<SubResult />} />
           <Route path="jodi-digit" element={<JodiDigitNumbers />} />
           <Route path="single-digit" element={<SingleDigitNumbers />} />
           <Route path="/single_pana" element={<SinglePanaNumbers/>}/>

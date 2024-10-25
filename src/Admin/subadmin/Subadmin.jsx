@@ -1,9 +1,14 @@
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import Listing from "../Api/Listing";
+
 function Subadmin() {
     const navigate = useNavigate();
     const [Regs, setRegs] = useState({
         phone: "",
         mpin: "",
-
+_id:"6713e7b925edec4b6aef1263"
     });
     const handleInputs = (e) => {
         const value = e.target.value;
@@ -19,12 +24,12 @@ function Subadmin() {
             return false;
         }
         setLoading(true);
-        const main = new Listing();
+        const main = new Listing    ();
         try {
-            const response = await main.Login(Regs);
+            const response = await main.SubLogin(Regs);
             if (response?.data) {
                 localStorage.setItem("token", response?.data?.token);
-                navigate("/dashboard");
+                navigate("/sub-admin-result");
                 toast.success(response.data.message);
             } else {
                 toast.error("invalid email/password");
@@ -54,7 +59,7 @@ function Subadmin() {
                 <form className="space-y-6" >
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                            Email address
+                            Phone
                         </label>
                         <div className="mt-2">
                             <input

@@ -31,7 +31,15 @@ const Login = () => {
       console.log("response", response)
       if (response?.data?.status === true) {
         localStorage.setItem("token", response?.data?.token);
-        navigate("/dashboard");
+        if(response.data.user.role=== "admin"){
+
+          navigate("/dashboard");
+        }
+
+        if(response.data.user.role=== "subadmin"){
+
+          navigate("/sub-admin-reult");
+        }
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);

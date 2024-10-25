@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Listing from '../Api/Listing';
+import Listing from '../../Api/Listing';
+
 import toast from 'react-hot-toast';
 
 function SelectGame({ listing }) {

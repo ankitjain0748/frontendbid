@@ -3,9 +3,8 @@ import History from './History';
 import AdminLayout from '../Layout/AdminLayout';
 
 const BidHistoryReport = () => {
-    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
-        betdate: '2024-10-18',
+        betdate: '',
         market_id: '',
         game_id: '',
     });
