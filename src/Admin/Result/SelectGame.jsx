@@ -35,8 +35,8 @@ function SelectGame({ listing }) {
             toast.error(response.data.message);
         }
     } catch (error) {
-        console.error("Error", error);
-        toast.error("Error updating market.");
+        console.error("Error", error?.response?.data?.message);
+        toast.error(error?.response?.data?.message)
     } finally {
         setLoading(false);
     }

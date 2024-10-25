@@ -53,6 +53,10 @@ class Listing extends Component {
         return Api.get("/market/marketlist",)
     }
 
+    async marketlistupdate() {
+        return Api.get("/market/marketlistupdate",)
+    }
+
     async marketEdit(data) {
         return Api.post("/market/marketupdate", data)
     }
@@ -61,7 +65,6 @@ class Listing extends Component {
         return Api.post("/market/marketdelete", data)
     }
 
-
     async GameRate(data) {
         return Api.post("/panna/gamerate", data)
     }
@@ -69,8 +72,6 @@ class Listing extends Component {
     async BidHistory() {
         return Api.get("/panna/bid-history")
     }
-
-
 
     async ResultRate(data) {
         return Api.post("/result/resultadd", data)

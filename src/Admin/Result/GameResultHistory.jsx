@@ -30,24 +30,60 @@ const GameResultHistory = () => {
   return (
     <>
       <div className="card-body">
-        <h4 className="card-title text-lg font-bold mb-4">Win Member</h4>
+        <h4 className="card-title text-lg font-bold mb-4">Game Result History</h4>
         <span id="deleteBetListMsg"></span>
         <div className="overflow-x-auto w-full">
           <table className="min-w-full bg-white shadow-lg rounded-lg">
             <thead>
               <tr className="bg-gray-200 ">
-                <th className="  px-2 py-4 text-left">Market Name</th>
-                <th className="  px-2 py-4 text-left">Open Panna</th>
-                <th className="  px-2 py-4 text-left">Close Panna</th>
-                <th className="  px-2 py-4 text-left">Open Action </th>
-                <th className="  px-2 py-4 text-left">Close Action </th>
+                <th className="px-2 py-4 text-left">S. No.</th>
+                <th className="px-2 py-4 text-left">Market Name</th>
+                <th className="px-2 py-4 text-left">Open Panna</th>
+                <th className="px-2 py-4 text-left">Close Panna</th>
+                <th className="px-2 py-4 text-left">Open Action </th>
+                <th className="px-2 py-4 text-left">Close Action </th>
               </tr>
             </thead>
             <tbody>
-              {listing?.map((item) => (
+              {listing?.map((item, index) => (
                 <tr key={item._id} className="text-gray-600 text-sm font-light">
-                  <td className="  px-2 py-4">{item.marketId.name}</td>
-                  <td className="  px-2 py-4">
+                  <td className=" text-left  px-2 py-4">{index + 1}</td>
+
+                  <td className="  text-left px-2 py-4">{item?.marketId?.name}</td>
+
+                  <td className="  text-left px-2 py-4">
+                    {
+                      item?.panaaModal?.map((panaa) => (
+                        <div key={panaa._id}>
+                          {panaa.point}
+                        </div>
+                      ))
+                    }
+                    {
+                      item?.sangamModal?.map((sangam) => (
+                        <div key={sangam._id}>
+                          {sangam.bid_point}
+                        </div>
+                      ))
+                    }
+                  </td>
+                  <td className=" text-left  px-2 py-4">
+                    {
+                      item?.panaaModal?.map((panaa) => (
+                        <div key={panaa._id}>
+                          {panaa.point}
+                        </div>
+                      ))
+                    }
+                    {
+                      item?.sangamModal?.map((sangam) => (
+                        <div key={sangam._id}>
+                          {sangam.bid_point}
+                        </div>
+                      ))
+                    }
+                  </td>
+                  <td className="  text-left px-2 py-4">
                     {
                       item?.panaaModal?.map((panaa) => (
                         <div key={panaa._id}>
@@ -63,23 +99,7 @@ const GameResultHistory = () => {
                       ))
                     }
                   </td>
-                  <td className="  px-2 py-4">
-                    {
-                      item?.panaaModal?.map((panaa) => (
-                        <div key={panaa._id}>
-                          {panaa.point}
-                        </div>
-                      ))
-                    }
-                    {
-                      item?.sangamModal?.map((sangam) => (
-                        <div key={sangam._id}>
-                          {sangam.bid_point}
-                        </div>
-                      ))
-                    }
-                  </td>
-                  <td className="  px-2 py-4">
+                  <td className=" text-left  px-2 py-4">
                     {
                       item?.panaaModal?.map((panaa) => (
                         <div key={panaa._id}>
@@ -95,22 +115,7 @@ const GameResultHistory = () => {
                       ))
                     }
                   </td>
-                  <td className="  px-2 py-4">
-                    {
-                      item?.panaaModal?.map((panaa) => (
-                        <div key={panaa._id}>
-                          {panaa.point}
-                        </div>
-                      ))
-                    }
-                    {
-                      item?.sangamModal?.map((sangam) => (
-                        <div key={sangam._id}>
-                          {sangam.bid_point}
-                        </div>
-                      ))
-                    }
-                  </td>
+
                 </tr>
               ))}
             </tbody>

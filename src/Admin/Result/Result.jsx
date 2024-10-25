@@ -4,6 +4,7 @@ import WinMember from "./WinMember";
 import AdminLayout from "../Layout/AdminLayout";
 import Listing from "../Api/Listing";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 
 function Result() {
@@ -16,14 +17,16 @@ function Result() {
         try {
             const main = new Listing();
             const response = await main.marketlist();
+            console.log("responsefetchMarketList",response)
             setListing(response?.data?.data);
         } catch (error) {
             console.error(error);
+            toast.error(error?.response?.data?.data)
         } finally {
             setLoading(false);
         }
     };
-    console.log(listing)
+    console.log("marketadd",listing)
 
     useEffect(() => {
         fetchMarketList();
