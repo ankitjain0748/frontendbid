@@ -47,6 +47,15 @@ class Listing extends Component {
         return Api.get("/user/setting", data)
     }
 
+    async WidthrawalAmount() {
+        return Api.get("/payment/widtrawalreq")
+    }
+
+    async userSubAdmin() {
+        return Api.get("/user/subadmin", )
+    }
+
+
     
 
     async userwithdrawal(data) {

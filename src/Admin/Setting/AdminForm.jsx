@@ -31,7 +31,7 @@ const AdminForm = () => {
             const main = new Listing();
             const response = await main.userProfiledata();
             console.log("responsefetchMarketList", response);
-            setListing(response?.data?.ProfileData);
+            setListing(response?.data?.data);
         } catch (error) {
             console.error(error);
             toast.error(error?.response?.data?.data);
@@ -46,7 +46,7 @@ const AdminForm = () => {
 
     // Update Regs when listing changes
     useEffect(() => {
-        if (listing.length > 0) {
+        if (listing?.length > 0) {
             // Assuming you want to show the first profile in the listing
             const firstProfile = listing[0]; // You can modify this logic to select the right profile
             setRegs({

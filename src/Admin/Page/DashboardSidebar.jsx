@@ -44,7 +44,7 @@ function DashboardSidebar({ listing }) {
             ))}
 
             {listing?.UserData?.map((item, index) => (
-                <div key={index} className="p-4 border rounded-lg shadow-sm bg-white">
+                <div key={index} className="p-4 border mt-5 rounded-lg shadow-sm bg-white">
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
                         <div className="flex flex-col items-center">

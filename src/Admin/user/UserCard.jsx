@@ -7,11 +7,14 @@ import { FaUserCircle } from "react-icons/fa";
 import WalletTransactionHistory from './WalletTransactionHistory';
 import AddWithdraw from './AddWithdraw';
 import AddSuucess from './AddSuucess';
+import Widtrawal from './Widtrawal';
 
 const UserCard = () => {
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const [payment, setPayment] = useState([]);
+    const [userpayment, setUserPayment] = useState([]);
+
     console.log(payment)
 
     const [loading, setLoading] = useState(false);
@@ -27,6 +30,7 @@ const UserCard = () => {
                     setUser(res.data.data);
                     setPayment(res?.data?.payment
                     )
+                    setUserPayment(res?.data?.userpayment  )
                 }
                 setLoading(false);
             })
@@ -160,7 +164,8 @@ const UserCard = () => {
                             </div>
                         </div>
                     </div>
-
+ 
+<Widtrawal userpayment={userpayment} username={user?.username}/>
                     <WalletTransactionHistory payment={payment} username={user?.username} />
                 </>
             )}
