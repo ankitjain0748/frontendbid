@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Listing from '../../Api/Listing';
 
-const WinMember = () => {
+const WinMember = ({fetchMarketList}) => {
 
   const [loading, setLoading] = useState(false);
   const [listing, setListing] = useState([]);
 
   console.log("listing", listing)
 
-  const fetchMarketList = async () => {
+  const fetchMarketLists = async () => {
     setLoading(true);
     try {
       const main = new Listing();
       const response = await main.ResultGet();
       console.log("response", response)
+      fetchMarketList();
       setListing(response?.data?.data);
     } catch (error) {
       console.error(error);
@@ -23,7 +24,7 @@ const WinMember = () => {
   };
 
   useEffect(() => {
-    fetchMarketList();
+    fetchMarketLists();
   }, []);
   console.log()
   return (

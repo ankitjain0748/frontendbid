@@ -13,6 +13,11 @@ class Listing extends Component {
         return Api.get("/user",)
     }
 
+    
+    async Dashboard() {
+        return Api.get("/api/user-stats",)
+    }
+
     async userList() {
         return Api.get("/user/list",)
     }

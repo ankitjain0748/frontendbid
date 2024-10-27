@@ -65,7 +65,10 @@ function BetListing() {
                                         </td>
                                         <td className="py-3 px-3 text-center">{item?.userId.phone}</td>
                                         <td className="py-3 px-3 text-center">{item?.userId.amount}</td>
-                                        <td className="py-3 px-3 text-center">{item?.betdate}</td>
+                                        <td className="py-3 px-3 text-center">{
+                                        moment(item?.betdate)
+                                        .format("DD-MMM-YYYY hh:mma")
+                                        }</td>
 
                                         <td className="py-3 px-3 text-center">
                                         {

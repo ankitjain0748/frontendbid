@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Listing from '../Api/Listing';
 import toast from 'react-hot-toast';
 import AdminLayout from '../Layout/AdminLayout';
 
 const AdminForm = () => {
+    const [listing, setListing] = useState([]);
     const [Regs, setRegs] = useState({
         Profile_name: '',
         Upi_id: '',
@@ -22,19 +23,62 @@ const AdminForm = () => {
         user_id: ''
     });
 
+    const [loading, setLoading] = useState(false);
+
+    const fetchMarketList = async () => {
+        setLoading(true);
+        try {
+            const main = new Listing();
+            const response = await main.Dashboard();
+            console.log("responsefetchMarketList", response);
+            setListing(response?.data?.ProfileData);
+        } catch (error) {
+            console.error(error);
+            toast.error(error?.response?.data?.data);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchMarketList();
+    }, []);
+
+    // Update Regs when listing changes
+    useEffect(() => {
+        if (listing.length > 0) {
+            // Assuming you want to show the first profile in the listing
+            const firstProfile = listing[0]; // You can modify this logic to select the right profile
+            setRegs({
+                Profile_name: firstProfile.Profile_name || '',
+                Upi_id: firstProfile.Upi_id || '',
+                whatapps: firstProfile.whatapps || '',
+                phone: firstProfile.phone || '',
+                profile_email: firstProfile.profile_email || '',
+                marchant_id: firstProfile.marchant_id || '',
+                min_widthrawal_rate: firstProfile.min_widthrawal_rate || '',
+                min_desposite_rate: firstProfile.min_desposite_rate || '',
+                min_bid_amount: firstProfile.min_bid_amount || '',
+                welcome_bouns: firstProfile.welcome_bouns || '',
+                Withrawal: firstProfile.Withrawal || '',
+                App_link: firstProfile.App_link || '',
+                message: firstProfile.message || '',
+                Video_link: firstProfile.Video_link || '',
+                user_id: firstProfile.user_id || '' // Ensure you get the user ID if necessary
+            });
+        }
+    }, [listing]);
+
     const handleInputs = (e) => {
         const { name, value } = e.target;
         setRegs((prevState) => ({ ...prevState, [name]: value }));
     };
-
-    const [loading, setLoading] = useState(false);
 
     const handleForms = async (e) => {
         e.preventDefault();
         if (loading) return;
 
         setLoading(true);
-
         const main = new Listing();
         try {
             const response = await main.userProfile(Regs); 
@@ -59,182 +103,156 @@ const AdminForm = () => {
                             {/* Name */}
                             <div>
                                 <label htmlFor="Profile_name" className="block font-medium mb-1">Name</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="Profile_name"
-                                        name="Profile_name"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.Profile_name}
-                                        onChange={handleInputs}
-                                        placeholder="Name"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="Profile_name"
+                                    name="Profile_name"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.Profile_name}
+                                    onChange={handleInputs}
+                                    placeholder="Name"
+                                />
                             </div>
 
                             {/* UPI ID */}
                             <div>
                                 <label htmlFor="Upi_id" className="block font-medium mb-1">UPI ID</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="Upi_id"
-                                        name="Upi_id"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.Upi_id}
-                                        onChange={handleInputs}
-                                        placeholder="UPI ID"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="Upi_id"
+                                    name="Upi_id"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.Upi_id}
+                                    onChange={handleInputs}
+                                    placeholder="UPI ID"
+                                />
                             </div>
 
                             {/* WhatsApp */}
                             <div>
                                 <label htmlFor="whatapps" className="block font-medium mb-1">WhatsApp</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="whatapps"
-                                        name="whatapps"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.whatapps}
-                                        onChange={handleInputs}
-                                        placeholder="WhatsApp"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="whatapps"
+                                    name="whatapps"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.whatapps}
+                                    onChange={handleInputs}
+                                    placeholder="WhatsApp"
+                                />
                             </div>
 
                             {/* Phone */}
                             <div>
                                 <label htmlFor="phone" className="block font-medium mb-1">Phone</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="phone"
-                                        name="phone"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.phone}
-                                        onChange={handleInputs}
-                                        placeholder="Phone"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="phone"
+                                    name="phone"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.phone}
+                                    onChange={handleInputs}
+                                    placeholder="Phone"
+                                />
                             </div>
 
                             {/* Profile Email */}
                             <div>
                                 <label htmlFor="profile_email" className="block font-medium mb-1">Profile Email</label>
-                                <div className="form-group">
-                                    <input
-                                        type="email"
-                                        id="profile_email"
-                                        name="profile_email"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.profile_email}
-                                        onChange={handleInputs}
-                                        placeholder="Profile Email"
-                                    />
-                                </div>
+                                <input
+                                    type="email"
+                                    id="profile_email"
+                                    name="profile_email"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.profile_email}
+                                    onChange={handleInputs}
+                                    placeholder="Profile Email"
+                                />
                             </div>
 
                             {/* Merchant ID */}
                             <div>
                                 <label htmlFor="marchant_id" className="block font-medium mb-1">Merchant ID</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="marchant_id"
-                                        name="marchant_id"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.marchant_id}
-                                        onChange={handleInputs}
-                                        placeholder="Merchant ID"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="marchant_id"
+                                    name="marchant_id"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.marchant_id}
+                                    onChange={handleInputs}
+                                    placeholder="Merchant ID"
+                                />
                             </div>
 
                             {/* Min Withdrawal Rate */}
                             <div>
                                 <label htmlFor="min_widthrawal_rate" className="block font-medium mb-1">Min Withdrawal Rate</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="min_widthrawal_rate"
-                                        name="min_widthrawal_rate"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.min_widthrawal_rate}
-                                        onChange={handleInputs}
-                                        placeholder="Min Withdrawal Rate"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="min_widthrawal_rate"
+                                    name="min_widthrawal_rate"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.min_widthrawal_rate}
+                                    onChange={handleInputs}
+                                    placeholder="Min Withdrawal Rate"
+                                />
                             </div>
 
                             {/* Min Deposit Rate */}
                             <div>
                                 <label htmlFor="min_desposite_rate" className="block font-medium mb-1">Min Deposit Rate</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="min_desposite_rate"
-                                        name="min_desposite_rate"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.min_desposite_rate}
-                                        onChange={handleInputs}
-                                        placeholder="Min Deposit Rate"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="min_desposite_rate"
+                                    name="min_desposite_rate"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.min_desposite_rate}
+                                    onChange={handleInputs}
+                                    placeholder="Min Deposit Rate"
+                                />
                             </div>
 
                             {/* Minimum Bid Amount */}
                             <div>
                                 <label htmlFor="min_bid_amount" className="block font-medium mb-1">Min Bid Amount</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="min_bid_amount"
-                                        name="min_bid_amount"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.min_bid_amount}
-                                        onChange={handleInputs}
-                                        placeholder="Min Bid Amount"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="min_bid_amount"
+                                    name="min_bid_amount"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.min_bid_amount}
+                                    onChange={handleInputs}
+                                    placeholder="Min Bid Amount"
+                                />
                             </div>
 
                             {/* Welcome Bonus */}
                             <div>
                                 <label htmlFor="welcome_bouns" className="block font-medium mb-1">Welcome Bonus</label>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        id="welcome_bouns"
-                                        name="welcome_bouns"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.welcome_bouns}
-                                        onChange={handleInputs}
-                                        placeholder="Welcome Bonus"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    id="welcome_bouns"
+                                    name="welcome_bouns"
+                                    className="form-control border rounded-md p-2 w-full"
+                                    value={Regs.welcome_bouns}
+                                    onChange={handleInputs}
+                                    placeholder="Welcome Bonus"
+                                />
                             </div>
                         </div>
 
                         <div>
-                            <div>
-                                <label htmlFor="Withrawal" className="block font-medium mb-1">
-                                    Withdrawal On/Off
-                                </label>
-                                <div className="form-group">
-                                    <select
-                                        name="Withrawal"
-                                        id="Withrawal"
-                                        className="form-control border rounded-md p-2 w-full"
-                                        value={Regs.Withrawal}
-                                        onChange={handleInputs}
-                                    >
-                                        <option value="Activate">Activate</option>
-                                        <option value="Deactivate">Deactivate</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <label htmlFor="Withrawal" className="block font-medium mb-1">Withdrawal On/Off</label>
+                            <select
+                                name="Withrawal"
+                                id="Withrawal"
+                                className="form-control border rounded-md p-2 w-full"
+                                value={Regs.Withrawal}
+                                onChange={handleInputs}
+                            >
+                                <option value="Activate">Activate</option>
+                                <option value="Deactivate">Deactivate</option>
+                            </select>
                         </div>
 
                         {/* App Link */}
@@ -260,7 +278,7 @@ const AdminForm = () => {
                                 id="message"
                                 value={Regs.message}
                                 onChange={handleInputs}
-                                placeholder="Enter Message"
+                                placeholder="Enter Share Message"
                             />
                         </div>
 
@@ -278,16 +296,9 @@ const AdminForm = () => {
                             />
                         </div>
 
-                        {/* Update Button */}
-                        <div className="form-group mt-4 text-right">
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="btn btn-raised bg-blue-500 text-white font-semibold py-2 px-6 rounded-md"
-                            >
-                                {loading ? "Submitting..." : "Update"}
-                            </button>
-                        </div>
+                        <button type="submit" className="btn btn-primary mt-4" disabled={loading}>
+                            {loading ? 'Loading...' : 'Submit'}
+                        </button>
                     </div>
                 </form>
             </div>

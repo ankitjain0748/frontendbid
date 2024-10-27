@@ -213,9 +213,13 @@ function Index() {
                                         <td className="py-3 px-6 text-left">
                                             {moment(item?.close_time, 'HH:mm').format('hh:mm A')}
                                         </td>
-                                        <td className="py-3 px-6 text-left">
+                                        <td
+                                            className={`capitalize	 py-3 px-6 font-bold text-left ${item?.market_status === "active" ? "text-green-500" : "text-red-500"
+                                                }`}
+                                        >
                                             {item?.market_status}
                                         </td>
+
                                         <td className="py-3 px-6 text-left">
                                             <button
                                                 className="bg-green-500 text-white px-2 py-2 rounded hover:bg-green-600"

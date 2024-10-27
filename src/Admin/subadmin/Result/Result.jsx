@@ -3,7 +3,6 @@ import GameResultHistory from "./GameResultHistory";
 import WinMember from "./WinMember";
 import AdminLayout from "../../Layout/AdminLayout";
 import Listing from '../../Api/Listing';
-
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -39,10 +38,10 @@ function Result() {
             <SelectGame listing={listing} />
         </div>
         <div className="mb-5">
-            <WinMember />
+            <WinMember  fetchMarketList={fetchMarketList}/>
         </div>
         <div className="mb-5">
-            <GameResultHistory />
+            <GameResultHistory fetchMarketList={fetchMarketList} />
         </div>
       </div>
     </>);

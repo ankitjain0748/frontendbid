@@ -2,20 +2,21 @@ import React, { useEffect, useState } from 'react';
 import Listing from '../../Api/Listing';
 
 
-const GameResultHistory = () => {
+const GameResultHistory = ({fetchMarketList}) => {
 
   const [loading, setLoading] = useState(false);
   const [listing, setListing] = useState([]);
 
   console.log("listing", listing)
 
-  const fetchMarketList = async () => {
+  const fetchMarketLists = async () => {
     setLoading(true);
     try {
       const main = new Listing();
       const response = await main.ResultGet();
       console.log("response", response)
       setListing(response?.data?.data);
+      fetchMarketList();
     } catch (error) {
       console.error(error);
     } finally {
@@ -24,7 +25,7 @@ const GameResultHistory = () => {
   };
 
   useEffect(() => {
-    fetchMarketList();
+    fetchMarketLists();
   }, []);
   console.log()
 

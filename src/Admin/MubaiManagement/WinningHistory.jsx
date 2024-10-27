@@ -64,6 +64,8 @@ function WinningHistory() {
                                         <td className="py-3 px-3 text-center">
                                             {item?.marketId?.name}
                                         </td>
+                                        <td className="py-3 px-3 text-center">{item?.bit_number}</td>
+
                                         <td className="py-3 px-3 text-center">
                                         {
                     item?.panaaModal?.map((panaa) => (
@@ -80,7 +82,6 @@ function WinningHistory() {
                     ))
                   }
                                         </td>
-                                        <td className="py-3 px-3 text-center">{item?.betnumber}</td>
                                         <td className="py-3 px-3 text-center">{item?.userId.amount}</td>
 
                                       
