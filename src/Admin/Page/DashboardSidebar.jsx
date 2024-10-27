@@ -1,5 +1,4 @@
 function DashboardSidebar({ listing }) {
-    console.log("listing", listing);
 
     return (
         <div className="card overflow-hidden shadow-lg rounded-lg">
@@ -16,10 +15,10 @@ function DashboardSidebar({ listing }) {
             {listing?.ProfileData?.map((item, index) => (
                 <div key={index} className="p-4 border rounded-lg shadow-sm bg-white">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                    <div className="flex flex-col items-center">
-                        <p className="text-lg font-semibold">{item?.Profile_name}</p>
-                        <p className="text-gray-500">Admin</p>
-                    </div>
+                        <div className="flex flex-col items-center">
+                            <p className="text-lg font-semibold">{item?.Profile_name}</p>
+                            <p className="text-gray-500">Admin</p>
+                        </div>
                         <div className="flex flex-col items-center">
                             <h5 className="text-lg font-semibold">{item?.phone}</h5>
                             <p className="text-gray-600">Phone</p>

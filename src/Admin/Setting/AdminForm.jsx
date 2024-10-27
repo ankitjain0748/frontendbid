@@ -20,7 +20,7 @@ const AdminForm = () => {
         App_link: '',
         message: '',
         Video_link: '',
-        user_id: ''
+        user_id: '66fc2486a4bd806bfdfefb0b'
     });
 
     const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const AdminForm = () => {
         setLoading(true);
         try {
             const main = new Listing();
-            const response = await main.Dashboard();
+            const response = await main.userProfiledata();
             console.log("responsefetchMarketList", response);
             setListing(response?.data?.ProfileData);
         } catch (error) {
@@ -64,7 +64,7 @@ const AdminForm = () => {
                 App_link: firstProfile.App_link || '',
                 message: firstProfile.message || '',
                 Video_link: firstProfile.Video_link || '',
-                user_id: firstProfile.user_id || '' // Ensure you get the user ID if necessary
+                user_id: "66fc2486a4bd806bfdfefb0b" || '' // Ensure you get the user ID if necessary
             });
         }
     }, [listing]);
@@ -97,7 +97,6 @@ const AdminForm = () => {
     return (
         <AdminLayout>
             <div className="px-4 py-2 lg:px-10 lg:py-2.5">
-                <form onSubmit={handleForms}>
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {/* Name */}
@@ -296,11 +295,12 @@ const AdminForm = () => {
                             />
                         </div>
 
-                        <button type="submit" className="btn btn-primary mt-4" disabled={loading}>
+                        <button type="submit" 
+                        onClick={handleForms}
+                        className="bg-blue-600 p-4 rounded-md mt-4" disabled={loading}>
                             {loading ? 'Loading...' : 'Submit'}
                         </button>
                     </div>
-                </form>
             </div>
         </AdminLayout>
     );

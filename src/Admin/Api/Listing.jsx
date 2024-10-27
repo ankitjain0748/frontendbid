@@ -43,6 +43,12 @@ class Listing extends Component {
         return Api.post("/user/profile", data)
     }
 
+    async userProfiledata(data) {
+        return Api.get("/user/setting", data)
+    }
+
+    
+
     async userwithdrawal(data) {
         return Api.post("/payment/withdrawal/data", data)
     }
