@@ -30,7 +30,7 @@ function Subadmin() {
             const response = await main.SubLogin(Regs);
             if (response?.data) {
                 localStorage.setItem("token", response?.data?.token);
-                navigate("/sub-admin-result");
+                navigate("/sub-admin-reult");
                 fetchMarketList();
                 toast.success(response.data.message);
             } else {
@@ -51,8 +51,8 @@ function Subadmin() {
         try {
             const main = new Listing();
             const response = await main.userSubAdmin();
-            console.log("responsefetchMarketList", response)
             setListing(response?.data?.data);
+
         } catch (error) {
             console.error(error);
             toast.error(error?.response?.data?.data)
