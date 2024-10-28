@@ -23,7 +23,7 @@ import WinningHistory from "./Admin/MubaiManagement/WinningHistory";
 import BetListing from "./Admin/MubaiManagement/BetListing";
 import Subadmin from "./Admin/subadmin/Subadmin";
 import SubResult from "./Admin/subadmin/Result/Result";
-import Privacy from "./Admin/Privacy";
+import PrivacyPolicy from "./Admin/PrivacyPolicy";
 
 
 
@@ -46,7 +46,7 @@ function App() {
           <Route path="/double_pana" element={<DoblePannaNumber/>} />
           <Route path ="/tripplepanna" element={<Tripplepanna/>}/>
           <Route path ="/fullsangam" element={<FullSangam/>}/>
-          <Route path ="/privacy_policy" element={<Privacy/>}/>
+          <Route path ="/privacy_policy" element={<PrivacyPolicy/>}/>
 
           <Route path ="/halfsangam" element={<HalfSangam/>}/>
           <Route path="/un-approved-users-list" element={<Unapproved />} />
